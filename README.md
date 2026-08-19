@@ -1,89 +1,102 @@
 # Enhaus
 
-**Recovery, matched.**
+**Own the MSK decision before anyone else owns the patient.**
 
-Enhaus is a proof-of-concept musculoskeletal care navigation and protection platform. The current prototype combines two product concepts:
+Enhaus is a proof-of-concept musculoskeletal care navigation and transaction platform. The working thesis is that Enhaus can become the consumer front door for MSK care: understand intent, route safely, compare payment paths, match a provider, book care, measure the episode, and later attach carrier-backed protection for future accidental injuries.
 
-1. **AI Provider Navigator** — a conversational intake experience that gathers a user's injury context, prior treatment, insurance, and care preferences, checks for basic red-flag symptoms, and ranks matching providers.
-2. **Strategy Dashboard** — an interactive summary of the temporary-insurance / MSK-access thesis, product architecture, illustrative economics, risks, and pilot roadmap.
+> **Sell access after pain begins. Sell insurance before pain begins.**
 
-## Run locally
+## Public proof of concept
 
-The current POC is intentionally dependency-free.
+GitHub Pages: `https://ballzatram.github.io/enhaus/`
 
-```bash
-python3 -m http.server 8080
-```
+- `index.html` — investor thesis, market structure, competitive map, regulatory architecture and 5-year scenario
+- `diligence.html` — quantified TAM/SAM/SOM, provider economics, insurance economics and Charlotte launch diligence
+- `experience.html` — end-to-end **Try Enhaus** product mock
+- `scope.html` — visual product and diligence scope of work
+- `SCOPE.md` — working implementation scope and evidence gates
+- `navigator.html` — compatibility route to the newer experience
 
-Then open `http://localhost:8080`.
+## Product concept
 
-You can also open `index.html` directly in a browser.
+The end-to-end experience is designed around five stages:
 
-## Provider Navigator flow
+1. **Understand** — conversational intake converts natural language into a structured care profile.
+2. **Route** — deterministic safety rules and non-diagnostic logic identify an appropriate first care path or escalate.
+3. **Compare** — the user compares a transparent episode with an insurance-verification route.
+4. **Book** — Enhaus ranks providers on specialty, price/payment fit, location, modality and availability.
+5. **Stay connected** — Enhaus can track the episode, outcomes and escalation, then separately introduce future-accident protection.
 
-The demo progressively captures:
+The current demo uses synthetic provider records, illustrative prices and mock appointment availability. It does not diagnose, verify benefits, create appointments or sell insurance.
 
-- name
-- injury / pain description
-- body area
-- timing and cause
-- functional impact
-- prior history / prior treatment
-- whether a doctor or clinician has evaluated the current issue
-- imaging history
-- insurance carrier
-- preference for in-person vs. virtual care
+## Business thesis
 
-The conversation is intentionally framed as **care navigation, not medical diagnosis**. A limited red-flag branch halts routine provider matching when certain high-risk symptoms are described.
+The strongest Enhaus model has three revenue engines sharing one infrastructure layer:
 
-Provider results are currently generated from mock Charlotte-area records and ranked on:
+- **Care transactions** — transparent MSK episodes and transaction/admin economics.
+- **Navigation/software** — employer, provider and embedded-partner infrastructure.
+- **Future-risk protection** — producer/MGA/admin economics around carrier-backed accident coverage purchased before a covered injury.
 
-- specialty / body-area fit
-- stated insurance compatibility
-- proximity
-- in-person / virtual preference
-- availability
-- baseline provider fit score
+The core defensibility hypothesis is **not the insurance policy or AI chat itself**. It is a dense provider graph plus demand aggregation, transaction history, routing-to-outcome data and contracting leverage.
+
+## Launch strategy
+
+The current scope prioritizes a concentrated Charlotte pilot:
+
+- 10–20 provider locations
+- clinician-reviewed safety routing
+- transparent episode pricing
+- insurance-verification comparison
+- 1,000–2,500 completed episodes in the initial operating test
+- measured intake → recommendation → booking → completion funnel
+- measured time to appointment, unit economics, outcomes and escalation
+- employer / sports / gym / embedded channel pilots before broad geographic scale
+
+See [`SCOPE.md`](SCOPE.md) for the full work plan and phase gates.
 
 ## Production architecture
 
-The current browser-only logic is designed to be replaced incrementally rather than rewritten:
-
 ```text
-User
-  ↓
-Conversational UI
-  ↓
-AI intake + structured extraction
-  ├─→ Safety / escalation policy
-  ├─→ Care-profile JSON
-  └─→ Missing-information follow-ups
-          ↓
-Provider matching service
-  ├─→ Provider directory
-  ├─→ Specialty taxonomy
-  ├─→ Insurance / network verification
-  ├─→ Location / travel time
-  └─→ Scheduling availability
-          ↓
-Ranked, explainable matches
+Consumer / Employer / Embedded Partner
+                ↓
+        Conversational Enhaus UI
+                ↓
+ AI intake + structured extraction
+        ├── Safety policy / escalation
+        ├── Care-profile schema
+        └── Missing-info follow-ups
+                ↓
+        Provider matching service
+        ├── Provider graph
+        ├── Specialty + quality
+        ├── Pricing / insurance
+        ├── Geography / modality
+        └── Availability
+                ↓
+       Payment / booking decision
+        ├── Transparent episode
+        └── Insurance verification
+                ↓
+      Episode + outcomes data loop
+                ↓
+ Optional future accident protection
+     through licensed carrier stack
 ```
 
-A production implementation should use a server-side AI endpoint so API credentials never reach the browser. The model should produce schema-constrained structured outputs, while deterministic policy code handles safety escalation and final provider eligibility rules.
+A production AI implementation should be server-side so credentials and protected data are not exposed in the browser. Models should produce schema-constrained structured outputs; deterministic policy code and licensed clinical governance should own safety escalation and final eligibility logic.
 
-## Product thesis
+## Regulatory design principle
 
-Enhaus separates two distinct needs:
+Enhaus should avoid regulated roles it does not need at launch. The current research architecture separates:
 
-- **Care Now:** transparent, fixed-price access after pain or injury already exists.
-- **Injury Protect:** carrier-backed accident protection purchased before the covered injury occurs.
+- Enhaus technology/navigation platform
+- independent licensed clinical providers
+- licensed insurance business entity / producers
+- underwriting carrier
+- external TPA / claims administrator when required
 
-The core thesis is:
-
-> Sell access after pain begins. Sell insurance before pain begins.
-
-The provider-navigation layer can serve both products and becomes the foundation for an outcomes and routing data loop.
+Provider referral compensation, corporate-practice rules, insurance producer licensing, TPA/MGA requirements, HIPAA/business-associate obligations, federal program rules and state-by-state PT scope all require qualified counsel before launch.
 
 ## Important
 
-This repository is an early proof of concept. Mock provider data is not a representation of real provider participation, insurance acceptance, clinical quality, appointment availability, or medical advice.
+This repository is an early strategic and product proof of concept. Provider data, prices, coverage, availability, financial models and insurance economics shown in the site are illustrative unless a primary source is cited. Nothing in the repository is medical, legal, actuarial, accounting or investment advice.
