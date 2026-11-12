@@ -1,4 +1,4 @@
-# Merge verification — 2026-11-12
+# Merge verification â€” 2026-11-12
 
 Candidate: https://github.com/Ballzatram/enhaus/pull/1. Base revision: `6ba79fbe55ac0f503d3a316646daa3dccd0428f6`.
 Machine-readable evidence: [standards evidence](evidence/standards-2026-11-12.json).
