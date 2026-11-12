@@ -100,3 +100,7 @@ Provider referral compensation, corporate-practice rules, insurance producer lic
 ## Important
 
 This repository is an early strategic and product proof of concept. Provider data, prices, coverage, availability, financial models and insurance economics shown in the site are illustrative unless a primary source is cited. Nothing in the repository is medical, legal, actuarial, accounting or investment advice.
+
+## Engineering standards
+
+This project references Engineering Standards 1.0.1 through `.standards.json` and the pinned `.engineering/` snapshot. See [adoption and verification](docs/standards-adoption.md) and [control assessment](docs/audit.md). Structural checks are not a full conformance claim.
