@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-12",
+  "base_revision": "6ba79fbe55ac0f503d3a316646daa3dccd0428f6",
+  "candidate_parent": "18e5b92ba99fb80438b4844e38420fe72e959e68",
+  "pull_request": "https://github.com/Ballzatram/enhaus/pull/1",
+  "runtime_contract": "Existing application behavior is preserved; no live external writes are used as verification.",
+  "hosted_protection": "Required PR and strict GitHub Actions standards-gate, including administrators; no force push/deletion.",
+  "conformance": "Not full conformance; unresolved controls remain in docs/audit.md.",
+  "base_application_inventory": {
+    "application_files_compared": 5,
+    "identical_application_files": 4,
+    "changed": [
+      {
+        "path": "navigator.html",
+        "base_bytes": 876,
+        "candidate_bytes": 886,
+        "base_gzip": 557,
+        "candidate_gzip": 564
+      }
+    ]
+  }
+}
